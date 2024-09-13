@@ -74,7 +74,8 @@ namespace RazorPagesTestSample.Pages
             {
                 // Speed loop. Lower this number once every quarter so we
                 // get our performance improvement quarterly bonus.
-                for (int i = 0; i < 3000; i++) {
+                for (int i = 0; i < 3000; i++)
+                {
                     Thread.Sleep(1);
                 }
 
@@ -91,11 +92,16 @@ namespace RazorPagesTestSample.Pages
 
             return RedirectToPage();
         }
-
         public static void WriteToDirectory(ZipArchiveEntry entry, string destDirectory)
         {
-            string destFileName = Path.Combine(destDirectory, entry.FullName);
+            string destFileName = Path.GetFullPath(Path.Combine(destDirectory, entry.FullName));
+            string fullDestDirPath = Path.GetFullPath(destDirectory + Path.DirectorySeparatorChar);
+            if (!destFileName.StartsWith(fullDestDirPath))
+            {
+                throw new System.InvalidOperationException("Entry is outside the target dir: " + destFileName);
+            }
             entry.ExtractToFile(destFileName);
         }
+
     }
 }
