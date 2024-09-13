@@ -38,4 +38,12 @@ We prefer all communications to be in English.
 
 Microsoft follows the principle of [Coordinated Vulnerability Disclosure](https://aka.ms/security.md/cvd).
 
+## Disclosure Policy
+
+We are committed to promptly addressing any reported vulnerabilities. Once a vulnerability has been fixed, we will disclose the details of the issue and the fix.
+
+## Acknowledgements
+
+We thank all security researchers and users who help us improve the security of our project.
+
 <!-- END MICROSOFT SECURITY.MD BLOCK -->
