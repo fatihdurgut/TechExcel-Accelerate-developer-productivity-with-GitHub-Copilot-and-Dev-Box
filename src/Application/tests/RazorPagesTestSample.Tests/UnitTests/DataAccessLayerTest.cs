@@ -30,7 +30,6 @@ namespace RazorPagesTestSample.Tests.UnitTests
                     actualMessages.OrderBy(m => m.Id).Select(m => m.Text));
             }
         }
-
         [Fact]
         public async Task AddMessageAsync_MessageIsAdded()
         {
@@ -42,12 +41,14 @@ namespace RazorPagesTestSample.Tests.UnitTests
 
                 // Act
                 await db.AddMessageAsync(expectedMessage);
+                var fakeMessage = new Message() { Id = recId, Text = "Invalid!" };
 
                 // Assert
                 var actualMessage = await db.FindAsync<Message>(recId);
-                Assert.Equal(expectedMessage, actualMessage);
+                Assert.Equal(fakeMessage, actualMessage);
             }
         }
+
 
         [Fact]
         public async Task DeleteAllMessagesAsync_MessagesAreDeleted()
